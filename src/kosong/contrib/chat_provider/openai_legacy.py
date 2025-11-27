@@ -173,7 +173,8 @@ def message_to_openai(message: Message, reasoning_key: str | None) -> ChatComple
     # See https://cdn.openai.com/spec/model-spec-2024-05-08.html#definitions
 
     serialized_tool_content: str | None = None
-    # Tool messages must use string content for OpenAI-compatible APIs
+    # Tool messages must use string content for DeepSeek APIs
+    # See https://github.com/MoonshotAI/kosong/pull/29
     if message.role == "tool" and isinstance(message.content, list):
         serialized_parts: list[str] = []
         for part in message.content:
